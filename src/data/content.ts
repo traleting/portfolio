@@ -1,52 +1,8 @@
-export const forensicsContent = {
-  heading: 'Cybersecurity & Digital Forensics',
-  intro:
-    'Developing practical knowledge in cybersecurity and digital forensics, with a focus on evidence handling, forensic methodology, system analysis and investigative thinking.',
-  description:
-    'This is an area I am actively building toward. I am not yet experienced in forensic casework — I am learning the fundamentals, methodology, and mindset required to work in this field responsibly.',
-  focusAreas: [
-    {
-      title: 'Forensic Methodology',
-      description:
-        'Understanding the structured process behind digital investigations — from identification and preservation to analysis and reporting.',
-    },
-    {
-      title: 'Evidence Handling',
-      description:
-        'Learning the principles of evidence integrity, chain of custody, and the care required when handling digital evidence.',
-    },
-    {
-      title: 'System Analysis',
-      description:
-        'Developing the ability to read and analyse systems — logs, file systems, memory, and network activity — to understand what happened and why.',
-    },
-    {
-      title: 'Investigative Thinking',
-      description:
-        'Building the analytical mindset needed to investigate incidents methodically, ask the right questions, and follow evidence rather than assumptions.',
-    },
-  ],
-  futureNote:
-    'Future forensic laboratory projects and case studies will be added here as I complete them.',
-};
-
 export const cvContent = {
   heading: 'Curriculum Vitae',
   intro:
     'A summary of my education, skills, and project experience. A downloadable PDF version will be available soon.',
   sections: [
-    {
-      title: 'Education',
-      items: [
-        {
-          title: 'IT Management Graduate',
-          org: 'South Africa',
-          period: '',
-          description:
-            'Formal qualification covering IT management, systems analysis, databases, and business technology.',
-        },
-      ],
-    },
     {
       title: 'Projects',
       items: [

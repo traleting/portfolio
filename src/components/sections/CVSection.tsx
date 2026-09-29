@@ -2,6 +2,20 @@ import { Download } from 'lucide-react';
 import { Section } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { cvContent } from '@/data/content';
+import { educationEntries } from '@/data/education';
+
+const sections = [
+  {
+    title: 'Education',
+    items: educationEntries.map((entry) => ({
+      title: entry.qualification,
+      org: entry.institution ?? entry.location ?? '',
+      period: [entry.startDate, entry.endDate].filter(Boolean).join(' – '),
+      description: entry.description ?? '',
+    })),
+  },
+  ...cvContent.sections,
+];
 
 export function CVSection() {
   return (
@@ -13,7 +27,7 @@ export function CVSection() {
       />
 
       <div className="space-y-10">
-        {cvContent.sections.map((section) => (
+        {sections.map((section) => (
           <div key={section.title}>
             <h3 className="text-lg font-semibold text-ink-900 dark:text-ink-50 mb-4 pb-2 border-b border-ink-200 dark:border-ink-800">
               {section.title}

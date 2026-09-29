@@ -1,7 +1,7 @@
-import type { TimelineEntry } from '@/data/timeline';
+import type { JourneyEntry } from '@/types/portfolio';
 
 interface TimelineItemProps {
-  entry: TimelineEntry;
+  entry: JourneyEntry;
   isLast: boolean;
 }
 

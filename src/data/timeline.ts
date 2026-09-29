@@ -1,12 +1,8 @@
-export interface TimelineEntry {
-  id: string;
-  phase: string;
-  title: string;
-  description: string;
-  status: 'completed' | 'current' | 'future';
-}
+import type { JourneyEntry } from '@/types/portfolio';
 
-export const timeline: TimelineEntry[] = [
+export type { JourneyEntry as TimelineEntry } from '@/types/portfolio';
+
+export const timeline = [
   {
     id: 'education',
     phase: 'Foundation',
@@ -63,4 +59,4 @@ export const timeline: TimelineEntry[] = [
       'Building toward digital forensics and DFIR — evidence handling, forensic methodology, system analysis, and investigative thinking.',
     status: 'future',
   },
-];
+] satisfies JourneyEntry[];

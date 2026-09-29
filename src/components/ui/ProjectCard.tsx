@@ -1,5 +1,7 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, Github } from 'lucide-react';
 import type { Project } from '@/data/projects';
+import { ProjectPreview } from '@/components/ui/ProjectPreview';
+import { appPath } from '@/lib/paths';
 
 interface ProjectCardProps {
   project: Project;
@@ -8,62 +10,75 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className="card card-hover group flex flex-col overflow-hidden">
-      {/* Screenshot placeholder */}
-      <div className="relative h-48 bg-gradient-to-br from-ink-100 to-ink-200 dark:from-ink-800 dark:to-ink-900 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-sm font-mono text-ink-400 dark:text-ink-600">
-            Screenshot placeholder
+      <a
+        href={appPath(`/projects/${project.id}`)}
+        aria-label={`View ${project.name} case study`}
+        className="relative block h-52 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500"
+      >
+        <ProjectPreview
+          screenshot={project.screenshots?.[0]}
+          projectName={project.name}
+          className="h-full"
+        />
+        {project.liveUrl && (
+          <span className="absolute right-4 top-4 rounded-full border border-white/60 bg-white/85 px-3 py-1 text-xs font-medium text-ink-700 shadow-sm backdrop-blur dark:border-ink-700 dark:bg-ink-900/85 dark:text-ink-200">
+            Live project
           </span>
-        </div>
-        <div className="absolute top-3 right-3">
-          <span className="badge-neutral bg-white/80 dark:bg-ink-900/80 backdrop-blur-sm">
-            Live
-          </span>
-        </div>
-      </div>
-
-      {/* Content */}
+        )}
+      </a>
       <div className="flex flex-col flex-1 p-6">
-        <div className="mb-1 flex items-center gap-2 text-xs font-medium text-ink-500 dark:text-ink-400">
+        <p className="mb-2 text-xs font-medium uppercase tracking-wider text-ink-500 dark:text-ink-400">
           <span>{project.client}</span>
-        </div>
-        <h3 className="text-xl font-semibold text-ink-900 dark:text-ink-50 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-200">
-          {project.name}
+        </p>
+        <h3 className="text-xl font-semibold text-ink-900 transition-colors duration-200 group-hover:text-brand-600 dark:text-ink-50 dark:group-hover:text-brand-400">
+          <a
+            href={appPath(`/projects/${project.id}`)}
+            className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+          >
+            {project.name}
+          </a>
         </h3>
         <p className="mt-2 text-sm text-ink-600 dark:text-ink-400 leading-relaxed flex-1">
           {project.description}
         </p>
 
-        {/* Technologies */}
         {project.technologies.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
+          <ul aria-label="Technologies" className="mt-4 flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
-              <span key={tech} className="badge-neutral">
+              <li key={tech} className="badge-neutral">
                 {tech}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
 
-        {/* Links */}
-        <div className="mt-5 flex items-center gap-4 border-t border-ink-100 dark:border-ink-800 pt-4">
+        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-ink-100 pt-4 dark:border-ink-800">
           <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors"
+            href={`/projects/${project.id}`}
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-800 transition-colors hover:text-brand-600 dark:text-ink-100 dark:hover:text-brand-400"
           >
-            <ExternalLink className="h-4 w-4" />
-            Live Site
+            Case study
+            <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
           </a>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 transition-colors hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
+            >
+              <ExternalLink aria-hidden="true" className="h-4 w-4" />
+              Live Site
+            </a>
+          )}
           {project.githubUrl && (
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm font-medium text-ink-600 dark:text-ink-400 hover:text-ink-900 dark:hover:text-ink-200 transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-600 transition-colors hover:text-ink-900 dark:text-ink-400 dark:hover:text-ink-200"
             >
-              <Github className="h-4 w-4" />
+              <Github aria-hidden="true" className="h-4 w-4" />
               Code
             </a>
           )}

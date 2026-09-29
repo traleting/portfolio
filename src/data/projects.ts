@@ -1,33 +1,15 @@
-export interface Project {
-  id: string;
-  name: string;
-  client: string;
-  liveUrl: string;
-  githubUrl: string | null;
-  description: string;
-  technologies: string[];
-  // Fields to be populated later — intentionally left empty for now
-  problem?: string;
-  requirements?: string;
-  solution?: string;
-  role?: string;
-  developmentProcess?: string;
-  challenges?: string;
-  testing?: string;
-  deployment?: string;
-  outcome?: string;
-  screenshots?: string[];
-}
+import type { Project } from '@/types/portfolio';
 
-export const projects: Project[] = [
+export type { Project, ProjectCaseStudy, ProjectScreenshot } from '@/types/portfolio';
+
+export const projects = [
   {
     id: 'anchor-and-vine',
     name: 'Anchor & Vine',
     client: 'Anchor & Vine',
     liveUrl: 'https://anchorandvine.co.za/',
     githubUrl: null,
-    description:
-      'A live business website built for a real client. Details to be added as the project documentation is completed.',
+    description: 'A live business website built for a real client.',
     technologies: [],
   },
   {
@@ -36,8 +18,7 @@ export const projects: Project[] = [
     client: 'Free State Football Institute (FSFI Group)',
     liveUrl: 'https://fsfigroup.vercel.app/',
     githubUrl: null,
-    description:
-      'A live web presence for the Free State Football Institute. Details to be added as the project documentation is completed.',
+    description: 'A live web presence for the Free State Football Institute.',
     technologies: [],
   },
   {
@@ -46,8 +27,7 @@ export const projects: Project[] = [
     client: 'ZenFi Connect',
     liveUrl: 'https://zen-fi.vercel.app/',
     githubUrl: null,
-    description:
-      'A live web application. Details to be added as the project documentation is completed.',
+    description: 'A live web application.',
     technologies: [],
   },
   {
@@ -56,8 +36,11 @@ export const projects: Project[] = [
     client: 'Mbanjwa & Associates',
     liveUrl: 'https://attorneys-seven.vercel.app/',
     githubUrl: null,
-    description:
-      'A live website for a legal practice. Details to be added as the project documentation is completed.',
+    description: 'A live website for a legal practice.',
     technologies: [],
   },
-];
+] satisfies Project[];
+
+export function getProjectById(id: string | undefined) {
+  return projects.find((project) => project.id === id);
+}

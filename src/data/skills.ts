@@ -1,10 +1,8 @@
-export interface SkillCategory {
-  name: string;
-  icon: string;
-  skills: string[];
-}
+import type { SkillCategory } from '@/types/portfolio';
 
-export const skillCategories: SkillCategory[] = [
+export type { SkillCategory } from '@/types/portfolio';
+
+export const skillCategories = [
   {
     name: 'Web Development',
     icon: 'Globe',
@@ -45,4 +43,4 @@ export const skillCategories: SkillCategory[] = [
     icon: 'Fingerprint',
     skills: ['Forensic Methodology (developing)', 'Evidence Handling (learning)'],
   },
-];
+] satisfies SkillCategory[];
