@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --border-color: #e2e8f0;
+  }
+
+  .dark {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-ink-50 text-ink-900 dark:bg-ink-950 dark:text-ink-100 font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-brand-500/20 text-brand-700 dark:text-brand-300;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-ink-100 dark:bg-ink-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink-300 dark:bg-ink-700 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-400 dark:bg-ink-600;
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply max-w-content mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .card {
+    @apply bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-800 rounded-xl transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:border-brand-400 dark:hover:border-brand-500 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .text-link {
+    @apply text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full border;
+  }
+
+  .badge-neutral {
+    @apply badge border-ink-200 dark:border-ink-700 bg-ink-100 dark:bg-ink-800 text-ink-600 dark:text-ink-300;
+  }
+
+  .badge-brand {
+    @apply badge border-brand-200 dark:border-brand-800 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300;
+  }
+
+  .badge-accent {
+    @apply badge border-accent-200 dark:border-accent-800 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-ink-600 dark:text-ink-300 hover:text-ink-900 dark:hover:text-ink-50 transition-colors duration-200;
+  }
+
+  .nav-link-active {
+    @apply text-brand-600 dark:text-brand-400;
+  }
+}
+
+/* Grid background pattern */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Reveal-on-scroll animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
